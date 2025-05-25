@@ -1,5 +1,7 @@
  import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
 
 export default function Dashboard() {
   const [username, setUsername] = useState('');
@@ -26,9 +28,32 @@ export default function Dashboard() {
       <div style={{ width: '220px', background: '#4B0082', color: 'white', padding: '20px' }}>
         <h2 style={{ marginBottom: '30px' }}>EXCEL ANALYTICS</h2>
         <ul style={{ listStyle: 'none', padding: 0 }}>
-          {['Dashboard', 'Upload Files', 'File History', 'Visualizations', 'Smart Insight', 'Downloads', 'Account Settings'].map(item => (
-            <li key={item} style={{ marginBottom: '15px', background: item === 'Dashboard' ? '#6A0DAD' : 'transparent', padding: '10px', borderRadius: '8px' }}>{item}</li>
-          ))}
+          {[
+  { label: 'Dashboard', path: '/dashboard' },
+  { label: 'Upload Files', path: '/upload' },
+  { label: 'File History', path: '/history' },
+  { label: 'Visualizations', path: '/visualizations' },
+  { label: 'Smart Insight', path: '/insights' },
+  { label: 'Downloads', path: '/downloads' },
+  { label: 'Account Settings', path: '/settings' }
+].map(({ label, path }) => (
+  <li key={label} style={{ marginBottom: '15px' }}>
+    <Link
+      to={path}
+      style={{
+        display: 'block',
+        textDecoration: 'none',
+        color: 'white',
+        background: path === '/dashboard' ? '#6A0DAD' : 'transparent',
+        padding: '10px',
+        borderRadius: '8px'
+      }}
+    >
+      {label}
+    </Link>
+  </li>
+))}
+
         </ul>
       </div>
 

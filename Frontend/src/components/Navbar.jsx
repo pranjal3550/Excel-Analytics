@@ -8,6 +8,7 @@ export default function Navbar() {
       <div className="buttons">
         <Link to="/login"><button className="btn-primary">Login</button></Link>
         <Link to="/"><button className="btn-secondary">Register</button></Link>
+        {/* <Link to="/upload">Upload Files</Link> */}
       </div>
     </nav>
   )
